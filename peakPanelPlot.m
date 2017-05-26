@@ -1,8 +1,11 @@
-function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos)
+function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos, runit, cunit)
     
     % Plot the final selected peaks
     % imgmat is the original diffraction image
     % imgmatz is the image with peaks intensities set to zero
+    
+    rrad = ceil(runit/2);
+    crad = ceil(cunit/2);
     
     % Set the number of subplots per row and column in each main plot
     npks = size(peakpos,1);
@@ -23,8 +26,8 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos)
             pcx = peakpos(n,1);
 
             subplot(rsubplt, csubplt, n-BlockVal(nb))
-            ROIView = imgmatz(pcx-10:pcx+10,pcy-10:pcy+10);
-            ROI = imgmat(pcx-10:pcx+10,pcy-10:pcy+10);
+            ROIView = imgmatz(pcx-rrad:pcx+crad,pcy-rrad:pcy+crad);
+            ROI = imgmat(pcx-rrad:pcx+crad,pcy-rrad:pcy+crad);
 
             %save([scanDate,'_RotScan_',num2str(rdeg),'deg_','ROI',num2str(n),'.mat'],'ROI');
 
@@ -32,14 +35,15 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos)
             PeakVal = round(sum(ROIPeak(:))/numel(ROIPeak));
             imagesc(ROIView,[0 1.25*max(ROI(:))]);
             title(['#',num2str(n),':',num2str(PeakVal)],'FontSize',12,'FontWeight','Bold');
+            
+            set(gca,'XTick',[],'YTick',[],'TickLength',[0 0])
+            colormap(jet)
 
         end
 
-        colormap(jet)
-
-        saveas(ha,[scanDate, '_Scan', num2str(scanNum)],'fig');
-        saveas(ha,[scanDate, '_Scan', num2str(scanNum)],'tiff');
-        saveas(ha,[scanDate, '_Scan', num2str(scanNum)],'png');
+        saveas(ha,[scanDate, '_Scan', num2str(scanNum), '_', num2str(nb)],'fig');
+        saveas(ha,[scanDate, '_Scan', num2str(scanNum), '_', num2str(nb)],'tiff');
+        saveas(ha,[scanDate, '_Scan', num2str(scanNum), '_', num2str(nb)],'png');
 
     end
     
