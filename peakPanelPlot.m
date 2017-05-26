@@ -7,7 +7,7 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos, runit, cunit
     rrad = ceil(runit/2);
     crad = ceil(cunit/2);
     
-    % Set the number of subplots per row and column in each main plot
+    % Set the number of subplots per row (rsubplt) and column (csubplt) in each main plot
     npks = size(peakpos,1);
     rsubplt = 4; csubplt = 5;
     nsubplt = rsubplt*csubplt;
@@ -29,14 +29,14 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos, runit, cunit
             ROIView = imgmatz(pcx-rrad:pcx+rrad,pcy-crad:pcy+crad);
             ROI = imgmat(pcx-rrad:pcx+rrad,pcy-crad:pcy+crad);
 
-            %save([scanDate,'_RotScan_',num2str(rdeg),'deg_','ROI',num2str(n),'.mat'],'ROI');
-
             ROIPeak = imgmat(pcx-1:pcx+1,pcy-1:pcy+1);
             PeakVal = round(sum(ROIPeak(:))/numel(ROIPeak));
             imagesc(ROIView,[0 1.25*max(ROI(:))]);
             title(['#',num2str(n),':',num2str(PeakVal)],'FontSize',12,'FontWeight','Bold');
             
+            % Remove the ticks and labels in the x & y axes
             set(gca,'XTick',[],'YTick',[],'TickLength',[0 0])
+            axis equal
             colormap(jet)
 
         end
