@@ -5,7 +5,7 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
 
     % Filtering peaks by Gaussian filter
     [~,maxind] = sort(svmax(:,3),'descend');
-    [x, y] = meshgrid(1:runit+1,1:cunit+1);
+    [x, y] = meshgrid(1:cunit+1, 1:runit+1);
     
     % Initialize counter for passable fits
     ctROI = 0;
@@ -29,7 +29,7 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
         rcent = double(int16(f.y0));
 
         % Impose fitting constraints for peak selection
-        if g.rsquare>0.8 && ccent>0 && ccent<21 && rcent>0 && rcent<21 && f.b>0 && f.b<20 && f.c>0 && f.c<20
+        if g.rsquare>0.8 && ccent>0 && ccent<cunit+1 && rcent>0 && rcent<runit+1 && f.b>0 && f.b<runit && f.c>0 && f.c<cunit
 
             % If the fitting result passes the criteria, add counter by 1
             % and store the ROI matrix
@@ -66,8 +66,13 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
             imwrite(imgX,[scanDate,'_ROI',num2str(ctROI),'.png']);
             close(hfit);
 
+            % Convert relative peak positions into absolute row and column
+            % positions in the whole image (peak_rPositionAbs & peak_cPositionAbs)
+            peak_rPositionAbs = rcent-rfitrad+svmax(maxind(m),1)+1;
+            peak_cPositionAbs = ccent-cfitrad+svmax(maxind(m),2)+1;
+            
             % Store the fit results in the peakpos matrix
-            peakpos(m,:) = [rcent-11+svmax(maxind(m),1), ccent-11+svmax(maxind(m),2), ROI(rcent,ccent)];
+            peakpos(m,:) = [peak_rPositionAbs, peak_cPositionAbs, ROI(rcent,ccent)];
 
         end
 
