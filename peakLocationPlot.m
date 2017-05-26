@@ -40,6 +40,7 @@ function imgmatz = peakLocationPlot(imgmat, svmax)
     end
     
     hold off
+    colormap(jet)
     
     % Return image with peak centers set to zero
     imgmatz = imgmat;

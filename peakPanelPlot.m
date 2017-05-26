@@ -26,8 +26,8 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos, runit, cunit
             pcx = peakpos(n,1);
 
             subplot(rsubplt, csubplt, n-BlockVal(nb))
-            ROIView = imgmatz(pcx-rrad:pcx+crad,pcy-rrad:pcy+crad);
-            ROI = imgmat(pcx-rrad:pcx+crad,pcy-rrad:pcy+crad);
+            ROIView = imgmatz(pcx-rrad:pcx+rrad,pcy-crad:pcy+crad);
+            ROI = imgmat(pcx-rrad:pcx+rrad,pcy-crad:pcy+crad);
 
             %save([scanDate,'_RotScan_',num2str(rdeg),'deg_','ROI',num2str(n),'.mat'],'ROI');
 
