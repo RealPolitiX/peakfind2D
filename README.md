@@ -7,6 +7,7 @@ A peak-finding routine in Matlab for diffraction images
 3. Find the region with potential peaks according to ranking of summed intensity (findPeakCandidates)
 4. Apply distance filter to the candidates (distanceFilter)
 5. Apply Gaussian filter to the candidates 1-2 times (GaussianFilter)
+6. Calculate the averaged intensity of a number of pixels around the peak (avgnearest)
 
 
 ### Visualization:
