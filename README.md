@@ -10,6 +10,7 @@ A peak-finding routine in Matlab for diffraction images
 6. Calculate the averaged intensity of a number of pixels around the peak (avgnearest)
 
 
-### Visualization:
+### Visualization of results:
 1. Peak-location-annotated images (peakLocationPlot)
 2. Panel plot of all found peaks (peakPanelPlot)
+N.B. the intensity at the peak locations are set to zero for better illustration in the visualization functions
