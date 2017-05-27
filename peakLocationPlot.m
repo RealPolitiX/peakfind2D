@@ -1,6 +1,9 @@
-function imgmatz = peakLocationPlot(imgmat, svmax)
-
+function imgmatz = peakLocationPlot(imgmat, svmax, gamma)
+    
+    % gamma is the color scaling factor
+    
     % Label selected 2D peaks on diffraction pattern
+    imgmax = max(imgmat(:));
     
     % Sort peaks by their intensity
     [~,maxind] = sort(svmax(:,3),'descend');
@@ -13,7 +16,7 @@ function imgmatz = peakLocationPlot(imgmat, svmax)
     % BW plot with peak annotation
     hpk = figure;
     set(hpk,'Position',[2 2 850 800]);
-    imshow(-imgmat,[-2000 0]);
+    imshow(-imgmat,[-gamma*imgmax 0]);
     hold on
     
     for k = 1:length(svmax)
@@ -30,7 +33,7 @@ function imgmatz = peakLocationPlot(imgmat, svmax)
     % Color plot with peak annotation
     hpkbw = figure;
     set(hpkbw,'Position',[2 2 850 800]);
-    imagesc(imgmat,[0 2000])
+    imagesc(imgmat,[0 gamma*imgmax])
     
     for k = 1:length(svmax)
         
