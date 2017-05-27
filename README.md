@@ -13,4 +13,5 @@ A peak-finding routine in Matlab for diffraction images
 ### Visualization of results:
 1. Peak-location-annotated images (peakLocationPlot)
 2. Panel plot of all found peaks (peakPanelPlot)
+
 N.B. the intensity at the peak locations are set to zero for better illustration in the visualization functions
