@@ -3,7 +3,7 @@ A peak-finding routine in Matlab for static and time-resolved (electron) diffrac
 
 ### General steps:
 1. Load diffraction image
-2. Apply median filter to the image to remove salt-and-pepper noise
+2. Apply median filter to the image to remove salt-and-pepper noise ([`medfilt2`](https://www.mathworks.com/help/images/ref/medfilt2.html))
 3. Center-blocking ([`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m))
 4. Disection of image matrix into small blocks of the same size ([`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m))
 5. Find the region with potential peaks (peak candidates) according to ranking of summed intensity ([`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m))
