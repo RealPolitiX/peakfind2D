@@ -35,6 +35,6 @@ N.B. the intensity at the peak locations are set to zero for better illustration
 
 ### Major free parameters (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example)):
 1. Center position (rcent, ccent) and radii (rrad, crad) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
-2. Block dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row (runit) and column (cunit) directions.
+2. Disected block image matrix dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row and column directions (runit, cunit).
 3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (dist)
 4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (ntop)
