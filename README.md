@@ -1,6 +1,17 @@
 # peakfind2D
 A peak-finding routine in Matlab for static and time-resolved (electron) diffraction images
 
+
+### Advantages:
+1. No need to consider the symmetry group
+2. Not based on gradients (robust to noise)
+
+
+### Limitations:
+1. Have trouble distinguishing highly overlapping peaks
+2. May not find all peaks for complex low-symmetry diffraction patterns, especially if certain diffraction peaks exhibit nonconvex shapes (e.g. due to crystallite shape, the level of orientational disorder/mosaicity)
+
+
 ### General steps (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example)):
 1. Load diffraction image
 2. Apply median filter to the image to remove salt-and-pepper noise ([`medfilt2`](https://www.mathworks.com/help/images/ref/medfilt2.html))
@@ -20,3 +31,10 @@ N.B. the intensity at the peak locations are set to zero for better illustration
 ![Peak gallery #1](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_1.png)
 ![Peak gallery #2](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_2.png)
 ![Peak gallery #3](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_3.png)
+
+
+### Major free parameters (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example)):
+1. Center position (rcent, ccent) and radii (rrad, crad) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
+2. Block dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row (runit) and column (cunit) directions.
+3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (dist)
+4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (ntop)
