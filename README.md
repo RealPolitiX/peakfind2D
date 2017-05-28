@@ -1,7 +1,7 @@
 # peakfind2D
 A peak-finding routine in Matlab for static and time-resolved (electron) diffraction images
 
-### General steps:
+### General steps (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example):
 1. Load diffraction image
 2. Apply median filter to the image to remove salt-and-pepper noise ([`medfilt2`](https://www.mathworks.com/help/images/ref/medfilt2.html))
 3. Center-blocking ([`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m))
