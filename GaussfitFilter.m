@@ -5,6 +5,7 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
     % row center position (rcent) within the size of the imagelet
     % column center position (ccent) within the size of the imagelet
     
+    [rval, cval] = size(imgmat);
     rfitrad = ceil(runit/2);
     cfitrad = ceil(cunit/2);
 
@@ -18,15 +19,25 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
     % Initialize matrix for storing fittin results
     peakpos = [];
     
-    % Loop over all of previously selected peaks
+    % Loop over all of previously selected peak candidates
     for m = 1:length(svmax)
         
         mx = svmax(maxind(m),1);
         my = svmax(maxind(m),2);
 
         % Set each ROI for fitting to be centered around a pre-selected peak
-        ROI = imgmat(mx-rfitrad:mx+rfitrad, my-cfitrad:my+cfitrad);
-        ROIView = ROI;
+        leftlim = mx - rfitrad;
+        rightlim = mx + rfitrad; 
+        toplim = my - cfitrad;
+        bottomlim = my + cfitrad;
+        
+        % Discard the candidates very close to the edge of the image
+        if leftlim>0 && toplim>0 && rightlim<cval && bottomlim<rval
+            
+            ROI = imgmat(leftlim:rightlim, toplim:bottomlim);
+            ROIView = ROI;
+            
+        end
 
         % Perform fitting to Gaussian
         [f,g,smROI] = GaussFit(x,y,ROI);
@@ -39,7 +50,7 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
             % If the fitting result satisfies the criteria, add counter by
             % 1 and store the ROI matrix
             ctROI = ctROI + 1;
-            save(['ROI',num2str(ctROI),'_Fit.mat'],'f','g','smROI');
+            save(['ROI',num2str(ctROI),'_Fit.mat'],'f','g','ROI');
 
             % Plot fit with data (as 2D surface)
             [xData, yData, zData] = prepareSurfaceData( x, y, smROI );
@@ -62,10 +73,10 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
             % Plot fitted region w/ the peak labeled (peak intensity set to 0 in display)
             ROIView(rcent,ccent) = 0;
             subplot(1,5,[4 5]);
-            imagesc(ROIView,[0 1.25*max(max(ROI))]);
+            imagesc(ROIView,[0.98*prctile(ROI(:),3) 1.02*prctile(ROI(:),97)]);
             title(['ROI',num2str(ctROI)],'FontSize',12,'FontWeight','Bold');
             set(gca,'FontWeight','bold');
-            colormap(jet)
+            %colormap(jet)
 
             % Save and close figures
             saveas(hfit,[scanDate,'_ROI',num2str(ctROI)],'fig');

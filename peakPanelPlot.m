@@ -31,13 +31,15 @@ function peakPanelPlot(scanDate, scanNum, imgmat, imgmatz, peakpos, runit, cunit
 
             ROIPeak = imgmat(pcx-1:pcx+1,pcy-1:pcy+1);
             PeakVal = round(sum(ROIPeak(:))/numel(ROIPeak));
-            imagesc(ROIView,[0 1.25*max(ROI(:))]);
+            
+            % Plot image with custom color scaling
+            imagesc(ROIView,[0.98*prctile(ROI(:),3) 1.02*prctile(ROI(:),97)]);
             title(['#',num2str(n),':',num2str(PeakVal)],'FontSize',12,'FontWeight','Bold');
             
             % Remove the ticks and labels in the x & y axes
             set(gca,'XTick',[],'YTick',[],'TickLength',[0 0])
             axis equal
-            colormap(jet)
+            % colormap(jet)
 
         end
 

@@ -38,7 +38,7 @@ function imgmatz = peakLocationPlot(imgmat, svmax, gamma)
     for k = 1:length(svmax)
         
         rectangle('Position',[svmax(maxind(k),2)-4,svmax(maxind(k),1)-4,8,8],'LineWidth',1.5,'EdgeColor','k');
-        text(svmax(maxind(k),2)-4,svmax(maxind(k),1)-8,num2str(k),'FontSize',9,'FontWeight','bold','Color',[0 0.5 0]);
+        text(svmax(maxind(k),2)-4,svmax(maxind(k),1)-8,num2str(k),'FontSize',9,'FontWeight','bold','Color',[1 1 1]);
     
     end
     
