@@ -23,6 +23,13 @@ A peak-finding routine in Matlab for static and time-resolved (electron) diffrac
 8. Calculate the averaged intensity of a number of pixels around the peak ([`avgnearest`](https://github.com/RealPolitiX/peakfind2D/blob/master/avgnearest.m))
 
 
+### Major free parameters (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example)):
+1. Center position (rcent, ccent) and radii (rrad, crad) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
+2. Disected block image matrix dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row and column directions (runit, cunit).
+3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (dist)
+4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (ntop)
+
+
 ### Visualization of results (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example) below):
 N.B. the intensity at the peak locations are set to zero for better illustration in the visualization functions
 1. Peak-location-annotated images ([`peakLocationPlot`](https://github.com/RealPolitiX/peakfind2D/blob/master/peakLocationPlot.m))
@@ -31,10 +38,3 @@ N.B. the intensity at the peak locations are set to zero for better illustration
 ![Peak gallery #1](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_1.png)
 ![Peak gallery #2](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_2.png)
 ![Peak gallery #3](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_3.png)
-
-
-### Major free parameters (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example)):
-1. Center position (rcent, ccent) and radii (rrad, crad) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
-2. Disected block image matrix dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row and column directions (runit, cunit).
-3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (dist)
-4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (ntop)
