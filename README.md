@@ -15,7 +15,6 @@ A peak-finding routine in Matlab for static and time-resolved (electron) diffrac
 ### Visualization of results:
 1. Peak-location-annotated images ([`peakLocationPlot`](https://github.com/RealPolitiX/peakfind2D/blob/master/peakLocationPlot.m))
 ![Si electron diffraction pattern](https://github.com/RealPolitiX/peakfind2D/blob/master/example/Img_wPeakAnnotation_BW.png)
-
 2. Panel plot of all found peaks ([`peakPanelPlot`](https://github.com/RealPolitiX/peakfind2D/blob/master/peakPanelPlot.m))
 ![Peak gallery #1](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_1.png)
 ![Peak gallery #2](https://github.com/RealPolitiX/peakfind2D/blob/master/example/2000-00-00_Scan1_PeakGallery_2.png)
