@@ -12,7 +12,7 @@ A peak-finding routine in Matlab for static and time-resolved (electron) diffrac
 8. Calculate the averaged intensity of a number of pixels around the peak ([`avgnearest`](https://github.com/RealPolitiX/peakfind2D/blob/master/avgnearest.m))
 
 
-### Visualization of results:
+### Visualization of results (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example) below):
 N.B. the intensity at the peak locations are set to zero for better illustration in the visualization functions
 1. Peak-location-annotated images ([`peakLocationPlot`](https://github.com/RealPolitiX/peakfind2D/blob/master/peakLocationPlot.m))
 ![Si electron diffraction pattern](https://github.com/RealPolitiX/peakfind2D/blob/master/example/Img_wPeakAnnotation_BW.png)
