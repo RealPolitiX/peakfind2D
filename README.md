@@ -1,5 +1,5 @@
 # peakfind2D
-A peak-finding routine in Matlab for diffraction images
+A peak-finding routine in Matlab for static and time-resolved (electron) diffraction images
 
 ### General steps:
 1. Load diffraction image
