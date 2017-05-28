@@ -24,10 +24,10 @@ A peak-finding routine in Matlab for static and time-resolved (electron) diffrac
 
 
 ### Major free parameters (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example))
-1. Center position (rcent, ccent) and radii (#####rrad, #####crad) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
-2. Disected block image matrix dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row and column directions (runit, cunit).
-3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (dist): depends on the density/sparsity of peaks in the diffraction pattern (easily estimated by eye). A sound choice can reduce computation cost for the following steps.
-4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (ntop): usually in the hundreds or more (0 < ntop < total number of block matrices after `matsect`). 
+1. Center position (`rcent, ccent`) and radii (`rrad, crad`) in [`centerblock`](https://github.com/RealPolitiX/peakfind2D/blob/master/centerblock.m) 
+2. Disected block image matrix dimensions in [`matsect`](https://github.com/RealPolitiX/peakfind2D/blob/master/matsect.m) along the row and column directions (`runit, cunit`).
+3. Distance limit in [`distanceFilter`](https://github.com/RealPolitiX/peakfind2D/blob/master/distanceFilter.m) (`dist`): depends on the density/sparsity of peaks in the diffraction pattern (easily estimated by eye). A sound choice can reduce computation cost for the following steps.
+4. Intensity ranking cutoff in [`findPeakCandidates`](https://github.com/RealPolitiX/peakfind2D/blob/master/findPeakCandidates.m) (`ntop`): usually in the hundreds or more (0 < `ntop` < total number of block matrices after `matsect`). 
 
 
 ### Visualization of results (see [example](https://github.com/RealPolitiX/peakfind2D/tree/master/example) below)
