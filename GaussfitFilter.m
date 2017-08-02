@@ -32,7 +32,7 @@ function peakpos = GaussfitFilter(scanDate, imgmat, svmax, runit, cunit)
         bottomlim = my + cfitrad;
         
         % Discard the candidates very close to the edge of the image
-        if leftlim>0 && toplim>0 && rightlim<cval && bottomlim<rval
+        if leftlim>0 && toplim>0 && rightlim<rval && bottomlim<cval
             
             ROI = imgmat(leftlim:rightlim, toplim:bottomlim);
             ROIView = ROI;
